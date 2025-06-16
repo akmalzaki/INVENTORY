@@ -1,0 +1,1055 @@
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Rubik";
+    height: 100%;
+    overflow: auto; 
+}
+
+#dashboardMainContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Pastikan kontainer utama sesuai dengan tinggi layar */
+}
+
+div.dashboard_sidebar {
+    width: 20%;
+    background: #fff;
+    min-height: 100vh; /* Memastikan sidebar sesuai dengan tinggi layar */
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22);
+}
+
+div.dashboard_content_container {
+    width: 80%;
+     background-color: rgb(194 ,194 ,194,0.35); 
+    /* background-color: rgb(120,100,100,0.22*/
+    height: 100vh; /* Memastikan konten utama sesuai dengan tinggi layar */
+}
+
+
+h3.dashboard_logo{
+    font-weight: bold;
+    color: rgb(102, 0, 0);
+    font-size: 80px;
+    text-align:center;
+    line-height:0;
+}
+
+div.dashboard_sidebar_user{
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #660000;
+}
+
+div.dashboard_sidebar_user img{
+    width: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    
+    /* vertical-align: middle; */
+}
+
+
+div.dashboard_sidebar_user span{
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+}
+
+ul.dashboard_menu_lists{
+    padding-left: 0px;
+    margin-top: 20px;
+}
+
+ul.dashboard_menu_lists li.liMainMenu {
+    position: relative; 
+    padding-top: 15px;
+    padding-left: 0px;
+    font-size: 18px;
+    /* border-top-right-radius: 10px;  
+    border-bottom-right-radius: 10px; */
+    
+}
+ul.dashboard_menu_lists li.liMainMenu:hover{
+    background-color: rgb(194 ,194 ,194,0.45);
+    transition: background-color 0.6s ease-in-out;
+}
+
+ul.dashboard_menu_lists li.liMainMenu a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-size: 15px;
+    margin-left: 20px;
+    padding: 0px 15px;
+    padding-bottom: 15px;
+}
+
+ul.dashboard_menu_lists li.liMainMenu a i{
+   font-size: 17px;
+   margin-right:20px;
+   
+}
+
+ul.dashboard_menu_lists li.menuActive{
+    background-color:rgb(194 ,194 ,194,0.45);
+}
+ul.dashboard_menu_lists li.border-left-active {
+    border-left: 5px solid rgb(102, 0, 0) ;
+}
+a.subMenuLink {
+    padding-left: 25px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    text-transform: none;
+    font-size: 15px !important;
+}
+
+.subMenuContainer{
+    padding-left: 0px;
+}
+a.subMenuLink i {
+    font-size: 16px !important;
+    width: 16px !important;
+}
+
+ul.subMenus {
+    background:rgb(194 194 194, 0.7);
+    padding-left: 0px !important;
+    display: none; /* sembunyikan submenu secara default */
+    transition: max-height 0.3s ease-out; /* Animate the max-height */
+}
+
+ul.subMenus.show { /* kelas untuk menampilkan submenu */
+    display: block !important;
+    max-height: 200px;
+}
+
+i.iconArrow{
+    float: right;
+}
+
+.subMenuActive{
+    color: rgb(102, 0, 0) !important;
+    font-weight: 700;
+    
+    /* border-top: 2px solid white;
+    border-bottom: 2px solid white;*/
+    /* background: rgb(132, 132, 132); */
+}
+
+
+/* TOP NAVBAR */
+div.dashboard_topNav{
+    background: #fff;
+    padding: 18px 15px 10px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px; */
+}
+
+div.dashboard_topNav a {
+    display: inline-block;
+    padding: 5px;
+    color: #000; 
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    position: relative; 
+    overflow: auto; 
+    transition: color 0.5s ease-in-out; 
+}
+
+div.dashboard_topNav a::before {
+    content: ""; 
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; 
+    height: 3px; 
+    background-color: #000; 
+    transform: translateX(-100%); 
+    transition: transform 0.5s ease-in-out; 
+}
+
+div.dashboard_topNav a:hover {
+    color: #660000; 
+}
+
+div.dashboard_topNav a:hover::before {
+    transform: translateX(0); 
+}
+
+a#logoutBtn{
+    float: right;
+}
+
+div.dashboard_content{
+    align-items: center;
+    padding: 20px 10px 10px 15px;
+    height: 80vh;
+    
+   
+}
+
+div.dashboard_content_main{
+    background-color: #fff;
+    border-radius: 15px;
+    /*text-align: center;
+    *//*min-height: 100vh;
+    height: 100vh;
+    */-webkit-border-radius: 10px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+div.addContainer{
+    display: flexx;
+    margin-top: 10px; 
+    
+}
+
+div.userAddFormContainer{
+    flex: 1;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.appForm {
+    /* background-color: #f0f0f0; */
+    padding: 20px;
+    border-radius: 20px;
+    width: 90% ;
+    margin: 0 auto;
+  }
+  
+  .appForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .appFormInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+  
+  .button-container {
+    text-align: left;
+    transition: margin-top 0.3s ease; /* Animasi pergeseran */
+  }
+  
+  .button-container button {
+    background: linear-gradient(to right, #93040c, #660000);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+  
+  .button-container button:hover {
+    background: #fff; /* Darker Green */
+    color: #660000;
+  }
+  
+  .button-container button i {
+    margin-right: 5px;
+  }
+
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+
+
+.responseMessage {
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 20px;
+}
+
+.responseMessage.success {
+    background-color: #d5f3d1;
+    color: #2d612b; /* Warna teks merah untuk pesan error */
+    border: 1px solid #d5f3d1;
+}
+
+.responseMessage.error {
+    background-color: #f8d7da;
+    color: #721c24; /* Warna teks merah untuk pesan error */
+    border: 1px solid #f5c6cb;
+}
+
+/* user add page */
+div.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+div.column{
+    width: 100%;
+}
+div.column-5{
+    width: 41.67%;
+}
+div.column-7{
+    width: 57.33%;
+    padding-left: 1%;
+}
+div.column-12{
+    width: 100%;
+}
+
+h1.section_header{
+    font-size: 20px;
+    color: #660000;
+    border-bottom: 1px solid #660000;
+    border-left: 4px solid #660000;
+    padding: 10px;
+}
+
+table, th, td{
+    border: 1px solid #cacaca;
+    border-collapse: collapse;
+}
+
+table{
+    width: 100%;
+}
+
+table th{
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #fff;
+}
+
+table td{
+    font-size: 13px;
+    text-align: center;
+    padding: 5px;
+}
+tbody tr:nth-child(odd) {
+  background-color: rgb(194 ,194 ,194,0.58); /* Baris ganjil: abu-abu terang */
+}
+
+p.userCount{
+    text-align: right;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #660000;
+}
+.delete-button {
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px;
+
+}
+.delete-button:hover {
+    background-color: darkred;
+}
+
+/* product image */
+.productImg{
+    width: 70px;
+    height: auto;
+}
+
+/* PRODUCT MESSAGE */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup box notif sukses*/
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.popup-content.success {
+    border: 2px solid #28a745;
+}
+
+.popup-content.error {
+    border: 2px solid #dc3545;
+}
+
+.popup-close {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+
+
+/* edit asset */
+/* Overlay styling */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Modal content styling */
+.modal-content {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    margin: 50px auto;
+    position: relative;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22);
+    overflow: auto;
+    max-height: 80%;
+}
+
+/* Close button styling */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #800000;
+    cursor: pointer;
+}
+
+/* order button */
+.button-order {
+    text-align: end;
+}
+.button-order {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#addNewBtn {
+    cursor: pointer;
+}
+  
+.button-order button {
+    background: linear-gradient(to right, #93040c, #660000);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 10%;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+  
+.button-order button:hover {
+    background: #fff; /* Darker Green */
+    color: #660000;
+    
+}
+  
+.button-order button i {
+    margin-right: 5px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between; /* Menyebar elemen secara merata */
+    align-items: flex-end;
+    width: 100%; /* Pastikan baris mengambil lebar penuh */
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Mengatur agar setiap grup mengambil ruang yang sama */
+}
+.form-group select, /* Atur lebar select */
+.form-group input { /* Atur lebar input */
+    width: 50%; /* Memastikan elemen mengambil lebar penuh dari grup */
+    box-sizing: border-box; /* Memastikan padding dan border dihitung dalam lebar */
+}
+
+
+ /* button delete */
+.button-delete {
+  width: 15%;
+   text-align: end;
+}
+.button-delete {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-delete button {
+    background: #fff; /* Darker Green */
+    border: 1px solid;
+    color: #6d6c6c;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    /* margin: 4px 2px; */
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+
+}
+  
+.button-delete button:hover {
+    background: #a0a0a0;
+    color: #fff;
+}
+  
+.button-delete button i {
+    margin-right: 5px;
+}
+
+/* button checkout */
+.button-checkout {
+    text-align: end;
+}
+.button-checkout {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-checkout button {
+    background: linear-gradient(to right, #93040c, #660000);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 10%;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+  
+.button-checkout button:hover {
+    background: #fff; /* Darker Green */
+    color: #660000;
+    
+}
+  
+.button-checkout button i {
+    margin-right: 5px;
+}
+
+/* TABLE DESIGN pada asset view */
+div.assetViewCont{
+    margin-top: 10px;
+}
+.table-header {
+    text-align: start;
+    font-size: 1.5rem;
+    padding: 10px;
+    background-color: #fff; /* Warna latar belakang untuk header */
+    border-bottom: none; /* Garis bawah untuk memisahkan header */
+}
+.section_header {
+    margin: 0; /* Hilangkan margin bawaan h1 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    overflow: auto;
+    
+}
+
+table thead {
+    background-color: #e0e0e0;
+    border-top: none;
+    
+}
+table tr:first-child th {
+    border-top: none; 
+}
+
+table th, table td {
+    padding: 8px 10px;
+    /* text-align: left; */
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #555;
+    border-left: none;  /* Menghilangkan garis vertikal kiri */
+    border-right: none; /* Menghilangkan garis vertikal kanan */
+    border-top: none; 
+}
+
+table th {
+    font-weight: bold;
+}
+
+table tbody tr{
+    background-color: #fff;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Gaya untuk gambar produk dan QR Code */
+table td img.productImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+table td img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Gaya untuk tombol edit dan delete */
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+}
+
+.edit-button {
+    background-color: #4CAF50; /* Warna hijau */
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336; /* Warna merah */
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
+
+/* Tampilan jumlah aset */
+.userCount {
+    text-align: right;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #666;
+}
+
+
+/* alert error */
+.alert {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: #4CAF50;
+}
+
+.alert.error {
+    background-color: #f44336;
+}
+
+/* Chart Container and Table Styling */
+#myChart {
+    max-width: 800px; /* Adjust width for better aspect */
+    max-height: 500px; /* Adjust height for proportion */
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#checkoutLineChart {
+    max-width: 800px; /* Adjust width for better aspect */
+    max-height: 500px; /* Adjust height for proportion */
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dataTable {
+    max-width: 1200px;
+    margin: 20px auto;
+    font-size: 0.85em; /* Slightly smaller font */
+    border-collapse: collapse; /* Clean up table border styling */
+}
+
+#dataTable th, #dataTable td {
+    padding: 8px 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc; /* Optional: Horizontal borders only */
+}
+
+#dataTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Flexbox container for the two charts */
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Jarak antara kotak chart */
+    margin-top: 20px; /* Jarak dari konten sebelumnya */
+    background-color: transparent;
+}
+
+.chart-box {
+    flex: 1;
+    background: #fff; /* Warna latar belakang */
+    border: 1px solid #ddd; /* Batasan kotak */
+    border-radius: 8px; /* Sudut melengkung */
+    padding: 20px; /* Padding dalam kotak */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22); /* Efek bayangan */
+}
+
+canvas {
+    width: 100% !important; /* Make canvas take the full width of its container */
+    height: 400px !important; /* Set a fixed height for the chart */
+}
+
+/* report */
+.reportsWrapper {
+    display: flex;
+    justify-content: center; /* Pusatkan secara horizontal */
+  }
+.reportsContainer{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Jarak antara kotak chart */
+    margin-top: 20px; /* Jarak dari konten sebelumnya */
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: transparent;
+    width: 800px;
+    
+}
+.reportBox{
+    flex: 1;
+    background: #fff; /* Warna latar belakang */
+    border: 1px solid #ddd; /* Batasan kotak */
+    border-radius: 8px; /* Sudut melengkung */
+    padding: 20px; /* Padding dalam kotak */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22);/* Efek bayangan */
+}
+h1.report_header{
+    font-size: 20px;
+    color: #660000;
+    padding: 10px;
+}
+
+.alignRight{
+    margin-top: 30px;
+    text-align: right;
+}
+.reportExportBtnExc{
+    padding: 4px 15px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #1D6F42;
+    color: white;
+    margin-left: 13px;
+    font-size: 11px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+.reportExportBtnExc:hover{
+    border: 1px solid #1D6F42;
+    background: #fff;
+    color: #1D6F42;
+}
+
+.reportExportBtnPDF{
+    padding: 4px 15px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #F40F02;
+    color: white;
+    margin-left: 13px;
+    font-size: 11px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+.reportExportBtnPDF:hover{
+    border: 1px solid #F40F02;
+    background: #fff;
+    color: #660000 ;
+    font-size: 11px;
+}
+
+/* permission */
+
+
+#permissionContainer{
+    margin-bottom: 15px;
+}
+.row {
+    display: flex; /* Mengatur elemen dalam baris */
+    flex-wrap: wrap; /* Memungkinkan baris baru jika kolom terlalu banyak */
+    margin: 0 -15px; /* Menambahkan margin negatif untuk kompensasi padding */
+}
+
+.kolom1, .kolom2, .kolom3 {
+    padding: 4px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-left: 13px;
+    font-size: 13px;
+    border: 1px solid #b3b3b3;
+    border-radius: 12px;
+    width: 80px;
+    height: 20px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    cursor: pointer;
+}
+
+.kolom1:hover, .kolom2:hover, .kolom3:hover {
+    background-color: #b3b3b3; 
+}
+
+.moduleFunc{
+    text-align: center;
+}
+
+.permissionActive{
+    background-color: #b3b3b3 ;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+/* Gaya untuk ikon informasi */
+.info-icon {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    cursor: pointer;
+    border: 1px solid #007bff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.info-icon:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Gaya untuk popup */
+.popup {
+    position: absolute;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.22);
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    z-index: 1000;
+    white-space: nowrap;
+}
+
+
+
+.popup::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px;
+    border-color: transparent transparent #fff transparent;
+    top: -12px;
+    left: 10px;
+}
+
+
+/* pagination asset co view*/
+.pagination_controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination_button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 0px;
+    background-color: #ddd;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination_button:hover {
+    background-color: #93040c;
+    color: #fff;
+}
+
+.pagination_button.active {
+    background-color: #93040c;
+    color: #fff;
+}
+
+.checkout_table_container {
+    margin: 20px 0;
+}
+
+.checkout_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.checkout_table th, 
+.checkout_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.checkout_table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.checkout_table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.checkout_table tr:hover {
+    background-color: #f1f1f1;
+}
+    
+
+
+
+
+

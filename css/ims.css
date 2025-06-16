@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+background: linear-gradient(90deg, rgb(215, 129, 40) 23%, rgb(136, 69, 51) 80%);
+    font-family: 'Rubik';
+    background-size: cover;
+}
+
+#errorMessage{
+    background: #fff;
+    color: red;
+    font-size: 10px;
+    
+}
+
+/* Dark overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* Adjust opacity for darkness */
+    z-index: 1; /* Place behind content */
+    
+}
+
+.container {
+    display: flex;
+    width: 90%; 
+    max-width: 1200px; 
+    height: auto; /* Allow height to adjust based on content */
+    background-color: white;
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.8);
+
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* Ensure container is above overlay */
+    z-index: 2; /* Bring the container above the overlay */
+}
+
+.left-section {
+    width: 60%;
+}
+
+.left-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover for better image fit */
+}
+
+.right-section {
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 100%;
+}
+
+.login-box h2 {
+    font-size: 30px;
+    color: #333;
+    padding-bottom: 2px;
+    text-align: center;
+}
+
+.brand {
+    color: #93040c;
+}
+
+.login-box p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-box label {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 16px; 
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f0f0; /* warna abu muda */
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 0 1px #ccc;
+}
+
+.input-box input:focus {
+    border-color: #93040c;
+}
+
+.remember-me {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.options a {
+    color: #2962ff;
+    text-decoration: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    margin-bottom: 20px;
+}
+
+.btn-login, .btn-create {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width of the container */
+    max-width: 150px; /* Set a max width for the button */
+    margin: 0 10px; /* Add margin to space between buttons */
+}
+
+.btn-login {
+    background-color: #93040c;
+    color: white;
+    border: none;
+}
+
+.btn-create {
+    background-color: #f5f5f5;
+    color: #2962ff;
+    border: 1px solid #2962ff;
+}
+
+.btn-login:hover {
+    background-color: #790a0a;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+.btn-create:hover {
+    background-color: #2962ff;
+    color: white;
+    transition: 0.5s;
+   
+}
+
+
+
+/* Media Query untuk perangkat mobile */
+@media (max-width: 768px) {
+    .container {
+        display: flex; /* Pastikan menggunakan flexbox */
+        flex-direction: column; /* Ubah menjadi kolom untuk perangkat mobile */
+        justify-content: center; /* Posisikan konten di tengah vertikal */
+        align-items: center; /* Posisikan konten di tengah horizontal */
+        width: 95%; /* Pastikan container memenuhi lebar layar */
+        margin-left: 10px;
+    }
+
+    .left-section {
+        width: 100%; /* Full width pada mobile */
+        height: 200px; /* Menentukan tinggi untuk gambar */
+    }
+
+    .right-section {
+        width: 100%; /* Full width pada mobile */
+        padding: 20px; /* Memberikan padding pada right section */
+        display: flex;
+        justify-content: center; /* Posisikan isi di tengah secara horizontal */
+        align-items: center; /* Posisikan isi di tengah secara vertikal */
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        display: flex; /* Pastikan menggunakan flexbox */
+        flex-direction: column; /* Ubah menjadi kolom untuk perangkat dengan lebar 1024px atau lebih kecil */
+        justify-content: center; /* Posisikan konten di tengah vertikal */
+        align-items: center; /* Posisikan konten di tengah horizontal */
+        width: 95%; /* Pastikan container memenuhi lebar layar */
+        margin: 0 auto; /* Posisikan container di tengah layar */
+        height: auto; /* Tinggi container mengikuti tinggi konten */
+    }
+
+    .left-section {
+        width: 100%; /* Full width pada tablet atau perangkat dengan lebar <= 1024px */
+        height: 200px; /* Menentukan tinggi untuk gambar */
+    }
+
+    .right-section {
+        width: 100%; /* Full width pada tablet atau perangkat dengan lebar <= 1024px */
+        padding: 20px; /* Memberikan padding pada right section */
+        display: flex;
+        justify-content: center; /* Posisikan isi di tengah secara horizontal */
+        align-items: center; /* Posisikan isi di tengah secara vertikal */
+    }
+}
+
+
+
+
