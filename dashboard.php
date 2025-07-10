@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (paginationControls) paginationControls.style.display = 'none';
 
             const noDataMessage = document.createElement('p');
-            noDataMessage.innerHTML = 'Data tidak ditemukan untuk filter yang dipilih.';
+            noDataMessage.innerHTML = 'Data not found for the selected filter.';
             noDataMessage.className = 'no-data-message';
             if (chartBox) chartBox.insertBefore(noDataMessage, paginationControls);
 

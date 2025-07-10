@@ -191,7 +191,7 @@ try {
                                             ?>
                                         </td>
                                         <td><?= date('M d, Y', strtotime($asset['created_at'])) ?></td>
-                                        <td><?= date('M d, Y H:i:s', strtotime($asset['updated_at'])) ?></td>
+                                        <td><?= date('M d, Y', strtotime($asset['updated_at'])) ?></td>
                                         
                                         <?php if ($user_role == 'admin' || $user_role == 'staff') { ?>
                                         <td>

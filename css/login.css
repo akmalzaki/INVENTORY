@@ -897,12 +897,13 @@ h1.report_header {
     position: relative;
 }
 .dropdown-filter .filter-button {
-    padding: 8px 15px;
+    padding: 8px 15px ;
     font-size: 14px;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 .dropdown-filter .filter-button:hover {
     background-color: #f7f7f7;
@@ -975,10 +976,78 @@ h1.report_header {
     color: #555;
     margin-right: 15px;
     font-size: 14px;
+    background: #ccc;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: none;
 }
 .pagination-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+}
+
+
+/* activity history */
+p.activityNotFound{
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    color:#888;
+}
+
+/* activity filter */
+.filter-container {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+.filter-group label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+.filter-group select,
+.filter-group button {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+.filter-group button {
+    background-color:#93040c;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+.filter-group button:hover {
+    background-color: #660000;
+}
+.filter-group a {
+    align-self: flex-end;
+    padding: 8px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+}
+.clearActivity{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
 }

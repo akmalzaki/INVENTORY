@@ -105,7 +105,7 @@ if ($table_name === 'assets') {
         // 2. DITAMBAHKAN: Simpan data ke tabel 'activity_history'
         $history_stmt = $conn->prepare(
     "INSERT INTO activity_history (asset_id, history_asset_name, history_asset_location, user_id, change_type, quantity_change, stock_before, stock_after, notes) 
-     VALUES (?, ?, ?, ?, 'initial_stock', ?, 0, ?, 'Initial stock on asset creation')"
+     VALUES (?, ?, ?, ?, 'add new asset', ?, 0, ?, 'New asset was added')"
 );
 $history_stmt->execute([
     $new_asset_id,

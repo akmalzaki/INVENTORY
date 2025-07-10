@@ -111,15 +111,7 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
 <head>
     <title>Activity History - Inventory Management</title>
     <?php include('partials/app-header-scripts.php'); ?>
-    <style>
-        .filter-container { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
-        .filter-group { display: flex; flex-direction: column; }
-        .filter-group label { font-size: 12px; font-weight: bold; margin-bottom: 5px; color: #555; }
-        .filter-group select, .filter-group button { padding: 8px; border-radius: 5px; border: 1px solid #ccc; font-size: 14px; }
-        .filter-group button { background-color: #93040c; color: white; cursor: pointer; border: none; font-weight: bold; }
-        .filter-group button:hover { background-color: #660000; }
-        .filter-group a { align-self: flex-end; padding: 8px; text-decoration: none; color: #555; font-size: 14px; }
-    </style>
+    
 </head>
 <body>
     <div id="dashboardMainContainer">
@@ -133,27 +125,27 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
 
                         <form action="activity-history.php" method="GET" class="filter-container">
                             <div class="filter-group">
-                                <label for="location">Stasiun / Lokasi</label>
+                                <label for="location">Station</label>
                                 <select name="location" id="location">
-                                    <option value="">Semua</option>
+                                    <option value="">All</option>
                                     <?php foreach($allLocations as $location): ?>
                                         <option value="<?= htmlspecialchars($location) ?>" <?= ($selected_location == $location) ? 'selected' : '' ?>><?= htmlspecialchars($location) ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="month">Bulan</label>
+                                <label for="month">Month</label>
                                 <select name="month" id="month">
-                                    <option value="">Semua</option>
+                                    <option value="">All</option>
                                     <?php foreach($months as $num => $name): ?>
                                         <option value="<?= $num ?>" <?= ($selected_month == $num) ? 'selected' : '' ?>><?= $name ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="year">Tahun</label>
+                                <label for="year">Year</label>
                                 <select name="year" id="year">
-                                    <option value="">Semua</option>
+                                    <option value="">All</option>
                                     <?php foreach($allYears as $year): ?>
                                         <option value="<?= $year ?>" <?= ($selected_year == $year) ? 'selected' : '' ?>><?= $year ?></option>
                                     <?php endforeach; ?>
@@ -165,41 +157,41 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
                             </div>
                             <div class="filter-group">
                                 <label>&nbsp;</label>
-                                <a href="activity-history.php">Clear Filter</a>
+                                <a href="activity-history.php" class="clearActivity">Clear Filter</a>
                             </div>
                         </form>
 
                         <?php if (empty($grouped_data)): ?>
-                            <p style="text-align: center; margin-top: 20px;">Tidak ada riwayat aktivitas yang ditemukan untuk filter yang dipilih.</p>
+                            <p class="activityNotFound">Data not found for the selected filter.</p>
                         <?php else: ?>
                             <?php foreach ($grouped_data as $month_year => $data_group): ?>
                                 <div class="checkout_table_container">
-                                    <h4>History for: <?= htmlspecialchars($month_year) ?></h4>
+                                   
                                     <table class="checkout_table">
                                         <thead>
                                             <tr>
-                                                <th>Tanggal</th>
-                                                <th>Nama Aset</th>
-                                                <th>Lokasi</th>
-                                                <th>Jenis Perubahan</th>
-                                                <th>Jumlah</th>
-                                                <th>Stok Sblm</th>
-                                                <th>Stok Stlh</th>
-                                                <th>Oleh</th>
-                                                <th>Catatan</th>
+                                                <th>Date</th>
+                                                <th>Asset Name</th>
+                                                <th>Location</th>
+                                                <th>Action</th>
+                                                <th>Amount</th>
+                                                <th>Before</th>
+                                                <th>After</th>
+                                                <th>By</th>
+                                                <th>Notes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($data_group as $data): ?>
                                                 <tr>
                                                     <td><?= date('d M Y, H:i', strtotime($data['created_at'])) ?></td>
-                                                    <td><?= htmlspecialchars($data['asset_name'] ?? 'Aset Dihapus') ?></td>
+                                                    <td><?= htmlspecialchars($data['asset_name'] ?? 'Asset Deleted') ?></td>
                                                     <td><?= htmlspecialchars($data['asset_location'] ?? '-') ?></td>
                                                     <td><?= htmlspecialchars($data['change_type']) ?></td>
                                                     <td><?= htmlspecialchars($data['quantity_change']) ?></td>
                                                     <td><?= htmlspecialchars($data['stock_before']) ?></td>
                                                     <td><?= htmlspecialchars($data['stock_after']) ?></td>
-                                                    <td><?= htmlspecialchars($data['first_name'] ?? 'User Dihapus') ?></td>
+                                                    <td><?= htmlspecialchars(isset($data['first_name']) ? $data['first_name'] . ' ' . $data['last_name'] : 'User Deleted') ?></td>
                                                     <td><?= htmlspecialchars($data['notes']) ?></td>
                                                 </tr>
                                             <?php endforeach; ?>

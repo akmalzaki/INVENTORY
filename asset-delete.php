@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            // Di dalam file asset-delete.php
 $history_stmt = $conn->prepare(
     "INSERT INTO activity_history (asset_id, history_asset_name, history_asset_location, user_id, change_type, quantity_change, stock_before, stock_after, notes) 
-     VALUES (?, ?, ?, ?, 'asset_deleted', ?, ?, 0, ?)"
+     VALUES (?, ?, ?, ?, 'asset deleted', ?, ?, 0, ?)"
 );
 $history_stmt->execute([
     $asset_id,
@@ -38,7 +38,7 @@ $history_stmt->execute([
     $user_id,
     -$stock_before,
     $stock_before,
-    "Asset '" . $asset_to_delete['asset_name'] . "' was permanently deleted."
+    $asset_to_delete['asset_name'] . " was deleted."
 ]);
 
             // 4. Hapus aset dari tabel utama

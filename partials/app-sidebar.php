@@ -57,6 +57,7 @@ $role = $user['role'] ?? 'guest';
                             <a class="subMenuLink" href="./asset-checkout.php"><i class="fa fa-circle-o"></i>Checkout
                                 Asset</a>
                         </li>
+                        <?php endif; ?>
                         <li class="subMenuContainer">
                             <a class="subMenuLink" href="./asset-co-view.php"><i class="fa fa-circle-o"></i>View Checkout
                                 Asset</a>
@@ -64,7 +65,7 @@ $role = $user['role'] ?? 'guest';
                         <li class="subMenuContainer">
                             <a class="subMenuLink" href="./activity-history.php"><i class="fa fa-circle-o"></i>Activity History</a>
                         </li>
-                    <?php endif; ?>
+                    
                 </ul>
             </li>
 
