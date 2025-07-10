@@ -41,13 +41,7 @@ $asset_options_json = json_encode($assets);
                     <div class="userAddFormContainer" id="userAddFormContainer">
                         <h1 class="section_header"><i class="fa fa-cart-plus"></i> Checkout</h1>
 
-                        <!-- Menampilkan pesan error jika ada -->
-                        <?php if (isset($_SESSION['message'])): ?>
-                            <div class="alert <?= $_SESSION['msg_type'] ?>">
-                                <?= $_SESSION['message']; ?>
-                                <?php unset($_SESSION['message']); ?>
-                            </div>
-                        <?php endif; ?>
+                      
 
                         <div class="button-order">
                             <button type="button" id="addNewBtn"><i class="fa fa-plus"></i> Add New</button>
@@ -91,6 +85,13 @@ $asset_options_json = json_encode($assets);
                                 <button type="submit"><i class="fa fa-cart-plus"></i> Checkout</button>
                             </div>
                         </form>
+                          <!-- Menampilkan pesan error jika ada -->
+                        <?php if (isset($_SESSION['message'])): ?>
+                            <div class="alert <?= $_SESSION['msg_type'] ?>">
+                                <?= $_SESSION['message']; ?>
+                                <?php unset($_SESSION['message']); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
