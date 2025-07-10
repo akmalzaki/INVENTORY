@@ -5,8 +5,8 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-include('connection.php'); // Include koneksi ke database
-date_default_timezone_set('Asia/Jakarta'); // Zona waktu lokal
+include('connection.php');
+date_default_timezone_set('Asia/Jakarta');
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,15 +14,16 @@ try {
         $asset_ids = $_POST['asset_id'];
         $asset_names = $_POST['asset_name'];
         $quantities = $_POST['quantity'];
+        $asset_locations = $_POST['asset_location']; // DITAMBAHKAN: Mengambil data lokasi
 
         // Data tambahan
         $checkout_by = $_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name'];
         $checkout_at = date('Y-m-d H:i:s');
 
-        // Persiapkan query SQL
+        // Persiapkan query SQL (dengan kolom asset_location)
         $stmt = $conn->prepare("
-            INSERT INTO checkout (asset_name, quantity_received, quantity_ordered, quantity_remaining, checkout_by, checkout_at) 
-            VALUES (:asset_name, :quantity_received, :quantity_ordered, :quantity_remaining, :checkout_by, :checkout_at)
+            INSERT INTO checkout (asset_name, asset_location, quantity_ordered, quantity_remaining, checkout_by, checkout_at) 
+            VALUES (:asset_name, :asset_location,  :quantity_ordered, :quantity_remaining, :checkout_by, :checkout_at)
         ");
 
         $conn->beginTransaction();
@@ -31,7 +32,8 @@ try {
             $asset_id = $asset_ids[$i];
             $asset_name = $asset_names[$i];
             $quantity_ordered = $quantities[$i];
-            $quantity_received = $quantity_ordered;
+            
+            $asset_location = $asset_locations[$i]; // DITAMBAHKAN: Ambil lokasi untuk baris saat ini
 
             // Ambil stok terkini
             $stock_stmt = $conn->prepare("SELECT stock FROM assets WHERE id = :id");
@@ -39,24 +41,22 @@ try {
             $current_stock = $stock_stmt->fetchColumn();
 
             // Cek stok
-            if ($current_stock <= 0) {
-                $_SESSION['message'] = "Checkout gagal untuk asset $asset_name karena stok habis.";
-                $_SESSION['msg_type'] = "error";
-                continue;
-            }
-
             if ($quantity_ordered > $current_stock) {
-                $_SESSION['message'] = "Checkout gagal untuk asset $asset_name karena stok tidak mencukupi.";
+                // Batalkan semua transaksi jika satu saja gagal
+                $conn->rollBack();
+                $_SESSION['message'] = "Checkout failed for asset '$asset_name'. Not enough stock.";
                 $_SESSION['msg_type'] = "error";
-                continue;
+                header('location: asset-checkout.php');
+                exit();
             }
 
             $quantity_remaining = $current_stock - $quantity_ordered;
 
-            // Simpan data checkout
+            // Simpan data checkout (dengan data lokasi)
             $stmt->execute([
                 ':asset_name' => $asset_name,
-                ':quantity_received' => $quantity_received,
+                ':asset_location' => $asset_location, // DITAMBAHKAN: Bind data lokasi
+                
                 ':quantity_ordered' => $quantity_ordered,
                 ':quantity_remaining' => $quantity_remaining,
                 ':checkout_by' => $checkout_by,
@@ -71,22 +71,24 @@ try {
             ]);
         }
 
-        // Commit transaksi
+        // Commit transaksi jika semua berhasil
         $conn->commit();
 
-        // Tutup koneksi
-        $conn = null;
-
-        // Redirect setelah berhasil
-        header('location: asset-checkout.php?status=success');
+        $_SESSION['message'] = "Assets checked out successfully!";
+        $_SESSION['msg_type'] = "success";
+        
+        header('location: asset-checkout.php');
         exit();
     } else {
         header('location: asset-checkout.php');
         exit();
     }
 } catch (PDOException $e) {
-    // Rollback jika error
+    // Rollback jika terjadi error SQL
     $conn->rollBack();
-    echo "Terjadi kesalahan: " . $e->getMessage();
+    $_SESSION['message'] = "An error occurred: " . $e->getMessage();
+    $_SESSION['msg_type'] = "error";
+    header('location: asset-checkout.php');
+    exit();
 }
 ?>

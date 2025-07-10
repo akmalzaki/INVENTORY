@@ -17,6 +17,7 @@ $users = include('show-users.php');
 <head>
     <title>Add Assets - Inventory Management</title>
     <?php include('partials/app-header-scripts.php'); ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -32,14 +33,19 @@ $users = include('show-users.php');
                         <h1 class="section_header"><i class="fa fa-plus"></i> Add Asset</h1>
 
                         <form action="add.php" method="POST" class="appForm" enctype="multipart/form-data">
-                            <!-- <div>
-                                <label for="asset_number">Asset Number</label>
-                                <input type="text" id="asset_number" name="asset_number" required
-                                    class="appFormInput" />
-                            </div> -->
+                            
                             <div>
                                 <label for="asset_name">Asset Name</label>
                                 <input type="text" id="asset_name" name="asset_name" required class="appFormInput" />
+                            </div>
+                            <div>
+                                <label for="asset_location">Asset Location</label>
+                                <select id="asset_location" name="asset_location" required class="appFormInput">
+                                    <option value="Halim">Halim</option>
+                                    <option value="Karawang">Karawang</option>
+                                    <option value="Padalarang">Padalarang</option>
+                                    <option value="Tegalluar">Tegalluar</option>
+                                </select>
                             </div>
                             <div>
                                 <label for="asset_info_detail">Asset Information</label>
@@ -49,7 +55,6 @@ $users = include('show-users.php');
                             <div>
                                 <label for="asset_type">Asset Type</label>
                                 <select id="asset_type" name="asset_type" required class="appFormInput">
-                                    <option value="">Select Asset Type</option>
                                     <option value="fast moving">Fast Moving</option>
                                     <option value="slow moving">Slow Moving</option>
                                 </select>
@@ -68,29 +73,33 @@ $users = include('show-users.php');
                             <div class="button-container">
                                 <button type="submit"><i class="fa fa-plus"></i> Add Asset</button>
                             </div>
+                  
                         </form>
+                        
                     </div>
                 </div>
 
-                <?php if (isset($_SESSION['message'])): ?>
-                    <div class="responseMessage <?= $_SESSION['msg_type'] ?>">
-                        <p><?= $_SESSION['message'] ?></p>
-                        <?php if (isset($_SESSION['qr_code_url'])): ?>
-                            <img src="<?= $_SESSION['qr_code_url'] ?>" alt="QR Code" style="margin-top: 20px;" />
-                            <?php
-                            unset($_SESSION['qr_code_url']);
-                        endif; ?>
-                    </div>
-                    <?php
-                    unset($_SESSION['message']);
-                    unset($_SESSION['msg_type']);
-                    ?>
-                <?php endif; ?>
             </div>
         </div>
     </div>
 
     <?php include('partials/app-scripts.php'); ?>
+    <?php
+    // Ambil pesan dari session jika ada
+    $popup_message = null;
+    if (isset($_SESSION['message'])) {
+        // Siapkan data untuk JavaScript
+        $popup_message = [
+            'message' => $_SESSION['message'],
+            'type' => $_SESSION['msg_type'] // 'success' atau 'error'
+        ];
+
+        // PENTING: HAPUS pesan dari session setelah diambil
+        // Ini menyelesaikan masalah harus refresh
+        unset($_SESSION['message']);
+        unset($_SESSION['msg_type']);
+    }
+    ?>
 </body>
 
 </html>

@@ -69,8 +69,9 @@ foreach ($checkout_data as $data) {
                                     <thead>
                                         <tr>
                                             <th>Asset Name</th>
+                                            <th>Location</th>
                                             <th>Quantity Ordered</th>
-                                            <th>Quantity Received</th>
+                                            
                                             <th>Quantity Remaining</th>
                                             <th>Checked Out By</th>
                                             <th>Checkout Date</th>
@@ -80,8 +81,9 @@ foreach ($checkout_data as $data) {
                                         <?php foreach ($data_group as $data): ?>
                                             <tr>
                                                 <td><?= htmlspecialchars($data['asset_name']) ?></td>
+                                                <td><?= htmlspecialchars($data['asset_location']) ?></td>
                                                 <td><?= htmlspecialchars($data['quantity_ordered']) ?></td>
-                                                <td><?= htmlspecialchars($data['quantity_received']) ?></td>
+                                                
                                                 <td><?= htmlspecialchars($data['quantity_remaining']) ?></td>
                                                 <td><?= htmlspecialchars($data['checkout_by']) ?></td>
                                                 <td><?= htmlspecialchars($data['checkout_at']) ?></td>

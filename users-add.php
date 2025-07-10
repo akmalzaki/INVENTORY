@@ -71,20 +71,6 @@ $users = include('show-users.php');
                                 </div>
                             </div>
 
-
-
-
-
-
-                            <!-- <div>
-                                <label for="role">Role</label>
-                                <select name="role" id="role" required class="appFormInput">
-                                    <option value="admin">Admin</option>
-                                    <option value="staff">Staff</option>
-                                    <option value="user">User</option>
-                                </select>
-                            </div> -->
-
                             <input type="hidden" name="table" value="users" />
                             <div class="button-container">
                                 <button type="submit"><i class="fa fa-plus"></i> Add User</button>
@@ -113,26 +99,8 @@ $users = include('show-users.php');
     </div>
 
     <script>
-        function loadScript() {
-            this.initialize = function () {
-                this.registerEvents();
-            };
-
-            this.registerEvents = function () {
-                document.addEventListener('click', function (e) {
-                    let target = e.target.closest('.kolom1, .kolom2, .kolom3');
-                    if (target) {
-                        document
-                            .querySelectorAll('.kolom1, .kolom2, .kolom3')
-                            .forEach((el) => el.classList.remove('permissionActive'));
-                        target.classList.add('permissionActive');
-                    }
-                });
-            };
-        }
-
-        var script = new loadScript();
-        script.initialize();
+       function loadScript(){this.initialize=function(){this.registerEvents()};this.registerEvents=function(){document.addEventListener('click',function(e){let target=e.target.closest('.kolom1, .kolom2, .kolom3');if(target){document.querySelectorAll('.kolom1, .kolom2, .kolom3').forEach((el)=>el.classList.remove('permissionActive'));target.classList.add('permissionActive')}})}}
+var script=new loadScript();script.initialize()
     </script>
 
     <?php include('partials/app-scripts.php'); ?>

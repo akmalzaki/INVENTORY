@@ -62,7 +62,7 @@ try {
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>NO</th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Email</th>
@@ -178,29 +178,8 @@ try {
 
 
     <script>
-        // Function to open and populate the Edit User modal
-        function openEditModal(userData) {
-            document.getElementById('user_id').value = userData.id;
-            document.getElementById('first_name').value = userData.first_name;
-            document.getElementById('last_name').value = userData.last_name;
-            document.getElementById('email').value = userData.email;
-            document.getElementById('role').value = userData.role;
-
-            // Show the modal
-            document.getElementById('editUserModal').style.display = 'flex';
-        }
-
-        // Close the modal when clicking the close button or outside the modal
-        document.getElementById('closeModalButton').onclick = function () {
-            document.getElementById('editUserModal').style.display = 'none';
-        };
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('editUserModal')) {
-                document.getElementById('editUserModal').style.display = 'none';
-            }
-        }
-
+        function openEditModal(userData){document.getElementById('user_id').value=userData.id;document.getElementById('first_name').value=userData.first_name;document.getElementById('last_name').value=userData.last_name;document.getElementById('email').value=userData.email;document.getElementById('role').value=userData.role;document.getElementById('editUserModal').style.display='flex'}
+document.getElementById('closeModalButton').onclick=function(){document.getElementById('editUserModal').style.display='none'};window.onclick=function(event){if(event.target==document.getElementById('editUserModal')){document.getElementById('editUserModal').style.display='none'}}
     </script>
 
     <?php include('partials/app-scripts.php'); ?>
