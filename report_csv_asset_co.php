@@ -41,7 +41,6 @@ if ($type === 'checkout') {
                 <tr>
                     <th style="width: 200px;">Asset Name</th>
                     <th style="width: 100px;">Quantity Ordered</th>
-                    <th style="width: 100px;">Quantity Received</th>
                     <th style="width: 100px;">Quantity Remaining</th>
                     <th style="width: 200px;">Checked Out By</th>
                     <th style="width: 200px;">Checkout Date</th>
@@ -58,7 +57,6 @@ if ($type === 'checkout') {
                 <tr>
                     <td>' . htmlspecialchars($checkout['asset_name']) . '</td>
                     <td>' . htmlspecialchars($checkout['quantity_ordered']) . '</td>
-                    <td>' . htmlspecialchars($checkout['quantity_received']) . '</td>
                     <td>' . htmlspecialchars($checkout['quantity_remaining']) . '</td>
                     <td>' . htmlspecialchars($checkout['checkout_by']) . '</td>
                     <td>' . $checkout_date . '</td>

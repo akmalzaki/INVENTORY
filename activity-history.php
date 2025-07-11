@@ -174,7 +174,7 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
                                                 <th>Asset Name</th>
                                                 <th>Location</th>
                                                 <th>Action</th>
-                                                <th>Amount</th>
+                                                <th>Qty</th>
                                                 <th>Before</th>
                                                 <th>After</th>
                                                 <th>By</th>

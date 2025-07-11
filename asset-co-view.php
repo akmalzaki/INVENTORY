@@ -111,27 +111,27 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
 
                         <form action="asset-co-view.php" method="GET" class="filter-container">
                             <div class="filter-group">
-                                <label for="location">Stasiun / Lokasi</label>
+                                <label for="location">Station</label>
                                 <select name="location" id="location">
-                                    <option value="">Semua</option>
+                                    <option value="">All</option>
                                     <?php foreach($allLocations as $location): ?>
                                         <option value="<?= htmlspecialchars($location) ?>" <?= ($selected_location == $location) ? 'selected' : '' ?>><?= htmlspecialchars($location) ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="month">Bulan</label>
+                                <label for="month">Month</label>
                                 <select name="month" id="month">
-                                    <option value="">Semua</option>
+                                    <option value="">All</option>
                                     <?php foreach($months as $num => $name): ?>
                                         <option value="<?= $num ?>" <?= ($selected_month == $num) ? 'selected' : '' ?>><?= $name ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label for="year">Tahun</label>
+                                <label for="year">Year</label>
                                 <select name="year" id="year">
-                                    <option value="">Semua</option>
+                                    <option value="">All</option>
                                     <?php foreach($allYears as $year): ?>
                                         <option value="<?= $year ?>" <?= ($selected_year == $year) ? 'selected' : '' ?>><?= $year ?></option>
                                     <?php endforeach; ?>
@@ -143,12 +143,12 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
                             </div>
                             <div class="filter-group">
                                 <label>&nbsp;</label>
-                                <a href="view-checkout.php" class="clearActivity">Clear Filter</a>
+                                <a href="asset-co-view.php" class="clearActivity">Clear Filter</a>
                             </div>
                         </form>
 
                         <?php if (empty($grouped_data)): ?>
-                            <p style="text-align: center; margin-top: 20px; font-style: italic; color: #888;">Tidak ada data checkout yang ditemukan untuk filter yang dipilih.</p>
+                            <p style="text-align: center; margin-top: 20px; font-style: italic; color: #888;">Data not found for the selected filter.</p>
                         <?php else: ?>
                             <?php foreach ($grouped_data as $month_year => $data_group): ?>
                                 <div class="checkout_table_container">
@@ -158,7 +158,7 @@ $months = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Me
                                             <tr>
                                                 <th>Asset Name</th>
                                                 <th>Location</th>
-                                                <th>Qty Ordered</th>
+                                                <th>Qty Checked Out</th>
                                                 <th>Qty Remaining</th>
                                                 <th>Checked Out By</th>
                                                 <th>Checkout Date</th>

@@ -20,7 +20,7 @@ class PDF extends FPDF
         $this->SetFont('', 'B');
 
         // Header tabel
-        $w = [40, 20, 20, 20, 40, 40];
+        $w = [40, 20, 35, 35, 40];
         for ($i = 0; $i < count($header); $i++) {
             $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
         }
@@ -34,12 +34,11 @@ class PDF extends FPDF
 
         // Data tabel
         foreach ($data as $row) {
-            $this->Cell($w[0], 6, $row['asset_name'], 'LR', 0, 'L', $fill);
-            $this->Cell($w[1], 6, $row['quantity_ordered'], 'LR', 0, 'C', $fill);
-            $this->Cell($w[2], 6, $row['quantity_received'], 'LR', 0, 'C', $fill);
-            $this->Cell($w[3], 6, $row['quantity_remaining'], 'LR', 0, 'C', $fill);
-            $this->Cell($w[4], 6, $row['checkout_by'], 'LR', 0, 'L', $fill);
-            $this->Cell($w[5], 6, date('M d, Y', strtotime($row['checkout_at'])), 'LR', 0, 'C', $fill);
+            $this->Cell($w[0], 5, $row['asset_name'], 'LR', 0, 'L', $fill);
+            $this->Cell($w[1], 5, $row['quantity_ordered'], 'LR', 0, 'C', $fill);
+            $this->Cell($w[2], 5, $row['quantity_remaining'], 'LR', 0, 'C', $fill);
+            $this->Cell($w[3], 5, $row['checkout_by'], 'LR', 0, 'L', $fill);
+            $this->Cell($w[4], 5, date('M d, Y', strtotime($row['checkout_at'])), 'LR', 0, 'C', $fill);
             $this->Ln();
             $fill = !$fill;
         }
@@ -78,7 +77,7 @@ $pdf->Cell(30, 10, 'Checkout History Report', 0, 0, 'C');
 $pdf->Ln(10);
 
 // Kolom header tabel
-$header = ['Asset Name', 'Ordered', 'Received', 'Remaining', 'Checked Out By', 'Checkout Date'];
+$header = ['Asset Name', 'Ordered', 'Remaining', 'Checked Out By', 'Checkout Date'];
 
 // Tampilkan data per tahun
 if (!empty($grouped_data)) {
