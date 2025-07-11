@@ -7,14 +7,14 @@ if (!isset($_SESSION['user'])) {
 $user_role = $_SESSION['user']['role'] ?? '';
 include('connection.php');
 
-// --- PENGAMBILAN DATA UNTUK OPSI FILTER ---
+
 try {
-    // Ambil daftar lokasi dari tabel master 'locations'
+    // mengambil data lokasi dari tabel assets
     $stmt_locations = $conn->prepare("SELECT DISTINCT asset_location FROM assets ORDER BY asset_location ASC");
     $stmt_locations->execute();
     $allLocations = $stmt_locations->fetchAll(PDO::FETCH_COLUMN);
 
-    // Ambil daftar tahun unik dari data riwayat
+    // mengambil riwayat berdasarkan tahun di tabel activity history
     $stmt_years = $conn->prepare("SELECT DISTINCT YEAR(created_at) as history_year FROM activity_history ORDER BY history_year DESC");
     $stmt_years->execute();
     $allYears = $stmt_years->fetchAll(PDO::FETCH_COLUMN);
@@ -22,7 +22,7 @@ try {
     die("Error fetching filter options: " . $e->getMessage());
 }
 
-// --- LOGIKA FILTER DAN PAGINATION ---
+//untuk filter dan pagination
 try {
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $limit = 10; 
@@ -35,9 +35,9 @@ try {
     $whereClauses = [];
     $params = [];
 
-    // Bangun klausa WHERE dinamis
+    // kolom filtering
     if (!empty($selected_location)) {
-        // PERBAIKAN: Filter langsung ke kolom history_asset_location
+        // filter langsung ke kolom history_asset_location
         $whereClauses[] = "sh.history_asset_location = ?";
         $params[] = $selected_location;
     }
@@ -65,7 +65,7 @@ try {
     $total_data = $stmt_total->fetch(PDO::FETCH_ASSOC)['total'];
     $total_pages = ceil($total_data / $limit);
 
-    // Menggunakan COALESCE agar nama aset tetap tampil jika aset induk dihapus
+    // menggunakan COALESCE agar nama aset tetap tampil jika aset induk dihapus
     $dataQuery = "SELECT 
                     sh.*, 
                     sh.history_asset_name as asset_name, 
@@ -94,7 +94,7 @@ try {
     }
 
 } catch (PDOException $e) {
-    // Atur variabel ke nilai default terlebih dahulu
+    // page berdasarkan filtering
     $history_data = [];
     $grouped_data = [];
     $total_data = 0;
